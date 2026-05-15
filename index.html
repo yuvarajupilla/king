@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MASTER KING CRICKET</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* CRICKET BACKGROUND */
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+      linear-gradient(rgba(0,0,0,0.78),rgba(0,0,0,0.88)),
+      url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      z-index:-3;
+    }
+
+    /* GOLD EFFECT */
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top right,#d4af3725,transparent 25%),
+      radial-gradient(circle at bottom left,#d4af3715,transparent 25%);
+      z-index:-2;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:50px 7%;
+    }
+
+    .hero-container{
+      width:100%;
+      max-width:1300px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:80px;
+    }
+
+    /* LEFT SIDE */
+
+    .left{
+      flex:1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 22px;
+      background:rgba(212,175,55,0.12);
+      border:1px solid rgba(212,175,55,0.3);
+      color:#f5d77b;
+      border-radius:50px;
+      margin-bottom:30px;
+      font-size:14px;
+      backdrop-filter:blur(10px);
+    }
+
+    .left h1{
+      font-size:72px;
+      line-height:1.05;
+      font-weight:800;
+      margin-bottom:25px;
+    }
+
+    .left h1 span{
+      color:#d4af37;
+      text-shadow:0 0 20px rgba(212,175,55,0.35);
+    }
+
+    .left p{
+      color:#d6d6d6;
+      font-size:18px;
+      line-height:1.9;
+      max-width:650px;
+      margin-bottom:40px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:50px;
+    }
+
+    .btn{
+      padding:18px 38px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.35s;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .primary{
+      background:linear-gradient(135deg,#f5cf5d,#d4af37);
+      color:black;
+      box-shadow:0 10px 30px rgba(212,175,55,0.25);
+    }
+
+    .primary:hover{
+      transform:translateY(-5px) scale(1.03);
+    }
+
+    .secondary{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.12);
+      color:white;
+      backdrop-filter:blur(10px);
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,0.09);
+    }
+
+    /* STATS */
+
+    .mini-stats{
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .mini-box{
+      min-width:170px;
+      padding:22px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+    }
+
+    .mini-box h3{
+      color:#d4af37;
+      font-size:34px;
+      margin-bottom:6px;
+    }
+
+    .mini-box p{
+      margin:0;
+      font-size:14px;
+      color:#bbb;
+    }
+
+    /* RIGHT SIDE CARD */
+
+    .right{
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .card{
+      width:420px;
+      background:rgba(15,15,15,0.82);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:35px;
+      padding:45px 35px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter:blur(15px);
+      box-shadow:
+      0 20px 60px rgba(0,0,0,0.6),
+      0 0 40px rgba(212,175,55,0.08);
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:240px;
+      height:240px;
+      background:rgba(212,175,55,0.08);
+      border-radius:50%;
+      top:-120px;
+      right:-100px;
+    }
+
+    .card::after{
+      content:'';
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:rgba(34,158,217,0.08);
+      border-radius:50%;
+      bottom:-80px;
+      left:-60px;
+    }
+
+    .logo-wrapper{
+      position:relative;
+      z-index:2;
+    }
+
+    .channel-logo{
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #d4af37;
+      box-shadow:
+      0 0 35px rgba(212,175,55,0.35),
+      0 10px 30px rgba(0,0,0,0.5);
+      margin-bottom:28px;
+    }
+
+    .card h2{
+      font-size:40px;
+      line-height:1.2;
+      margin-bottom:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .subs{
+      color:#bebebe;
+      font-size:18px;
+      margin-bottom:35px;
+      position:relative;
+      z-index:2;
+    }
+
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      margin-bottom:38px;
+      position:relative;
+      z-index:2;
+    }
+
+    .feature{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.05);
+      padding:16px;
+      border-radius:14px;
+      color:#ddd;
+      font-size:15px;
+      text-align:left;
+    }
+
+    .join-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:16px;
+      background:#229ED9;
+      color:white;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.35s;
+      text-decoration:none;
+      display:inline-block;
+      position:relative;
+      z-index:2;
+      box-shadow:0 10px 25px rgba(34,158,217,0.3);
+    }
+
+    .join-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 15px 35px rgba(34,158,217,0.45);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1100px){
+
+      .hero-container{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:60px;
+      }
+
+      .left p{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .mini-stats{
+        justify-content:center;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .hero{
+        padding:40px 20px;
+      }
+
+      .left h1{
+        font-size:48px;
+      }
+
+      .left p{
+        font-size:16px;
+      }
+
+      .card{
+        width:100%;
+        padding:35px 24px;
+      }
+
+      .channel-logo{
+        width:150px;
+        height:150px;
+      }
+
+      .card h2{
+        font-size:32px;
+      }
+
+      .mini-box{
+        width:100%;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+    }
+
+    @media(max-width:480px){
+
+      .left h1{
+        font-size:38px;
+      }
+
+      .tag{
+        font-size:12px;
+      }
+
+      .card h2{
+        font-size:28px;
+      }
+
+      .feature{
+        font-size:14px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <!-- LEFT SIDE -->
+
+      <div class="left">
+
+        <div class="tag">
+          🏏 INDIA'S PREMIUM CRICKET PREDICTION CHANNEL
+        </div>
+
+        <h1>
+          MASTER KING <span>CRICKET</span>
+        </h1>
+
+        <p>
+          Get accurate IPL predictions, fantasy cricket teams,
+          toss reports, live match analysis and daily winning tips.
+          Join 24,000+ cricket fans and stay ahead every match day.
+        </p>
+
+        <div class="buttons">
+
+          <a href="https://t.me/+YEcmrbFdy0RmYzRl"
+             target="_blank"
+             class="btn primary">
+             🚀 JOIN TELEGRAM
+          </a>
+
+          <a href="#"
+             class="btn secondary">
+             📊 VIEW RECORD
+          </a>
+
+        </div>
+
+        <div class="mini-stats">
+
+          <div class="mini-box">
+            <h3 id="members">0</h3>
+            <p>Subscribers</p>
+          </div>
+
+          <div class="mini-box">
+            <h3 id="accuracy">0%</h3>
+            <p>Accuracy</p>
+          </div>
+
+          <div class="mini-box">
+            <h3 id="wins">0+</h3>
+            <p>Winning Tips</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+
+      <div class="right">
+
+        <div class="card">
+
+          <div class="logo-wrapper">
+
+            <img src="logo.jpeg"
+                 alt="MASTER KING"
+                 class="channel-logo">
+
+          </div>
+
+          <h2>MASTER KING CRICKET</h2>
+
+          <div class="subs">
+            24,780+ Active Subscribers
+          </div>
+
+          <div class="features">
+
+            <div class="feature">
+              ✅ Daily Match Predictions
+            </div>
+
+            <div class="feature">
+              ✅ Fantasy Cricket Teams & GL Tips
+            </div>
+
+            <div class="feature">
+              ✅ IPL Toss Reports & Match Analysis
+            </div>
+
+            <div class="feature">
+              ✅ Fast Updates Before Every Match
+            </div>
+
+          </div>
+
+          <a href="https://t.me/+YEcmrbFdy0RmYzRl"
+             target="_blank"
+             class="join-btn">
+             JOIN CHANNEL NOW
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    function counter(id,start,end,speed,symbol=''){
+
+      let obj=document.getElementById(id);
+
+      let current=start;
+
+      let timer=setInterval(()=>{
+
+        current++;
+
+        obj.innerHTML=current + symbol;
+
+        if(current>=end){
+          clearInterval(timer);
+        }
+
+      },speed);
+
+    }
+
+    counter("members",0,24780,1,"+");
+    counter("accuracy",0,94,30,"%");
+    counter("wins",0,1800,2,"+");
+
+  </script>
+
+</body>
+</html>
